@@ -20,6 +20,13 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+textarea,
+input,
+button {
+  font: inherit;
 }
 
 @keyframes drift {
@@ -60,4 +67,84 @@ body {
   width: 32%;
   background: linear-gradient(90deg, transparent, rgba(132,204,22,0.20), transparent);
   animation: slide-sheen 6s ease-in-out infinite;
+}
+
+.tank-board {
+  background:
+    linear-gradient(90deg, rgba(30,33,25,0.05) 1px, transparent 1px),
+    linear-gradient(rgba(30,33,25,0.05) 1px, transparent 1px),
+    radial-gradient(circle at 14% 18%, rgba(183,239,95,0.24), transparent 28%),
+    #ede7d8;
+  background-size: 42px 42px, 42px 42px, auto, auto;
+}
+
+.tank-serif {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0;
+}
+
+.idea-badge {
+  animation: drift 6s ease-in-out infinite;
+  box-shadow: 0 14px 40px rgba(61, 92, 40, 0.18);
+}
+
+.tool-spine {
+  align-content: start;
+  gap: 12px;
+}
+
+.canvas-area {
+  background:
+    radial-gradient(circle at 18% 26%, rgba(183,239,95,0.16), transparent 22%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.9), transparent 20%),
+    #fbf8ef;
+}
+
+.paper-note,
+.sticky-large {
+  display: block;
+  border: 1px solid rgba(30, 33, 25, 0.1);
+  background: #fff3a8;
+  box-shadow: 0 16px 36px rgba(30, 33, 25, 0.12);
+}
+
+.paper-note {
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.sticky-large {
+  min-height: 280px;
+  border-radius: 4px 22px 8px 24px;
+  padding: 24px;
+}
+
+.sticky-large textarea {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hash-strip {
+  border: 1px dashed rgba(30, 33, 25, 0.24);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.72);
+  padding: 18px;
+}
+
+.proof-drawer {
+  background:
+    linear-gradient(180deg, rgba(183,239,95,0.1), transparent 28%),
+    #1e2119;
+}
+
+.action-pill {
+  min-height: 56px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.action-pill:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(61, 92, 40, 0.16);
 }
