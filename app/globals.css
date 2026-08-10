@@ -21,3 +21,43 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg); }
+  50% { transform: translate3d(0, -12px, 0) rotate(1deg); }
+}
+
+@keyframes reveal-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(132, 204, 22, 0); }
+  50% { box-shadow: 0 0 34px rgba(132, 204, 22, 0.22); }
+}
+
+@keyframes slide-sheen {
+  0% { transform: translateX(-120%) rotate(8deg); opacity: 0; }
+  30% { opacity: 0.35; }
+  100% { transform: translateX(160%) rotate(8deg); opacity: 0; }
+}
+
+.lab-grid {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(21,20,15,0.13) 1px, transparent 0);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at 58% 34%, black, transparent 74%);
+}
+
+.drift { animation: drift 6s ease-in-out infinite; }
+.reveal-glow { animation: reveal-glow 3s ease-in-out infinite; }
+
+.privacy-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.privacy-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -60% 0;
+  width: 32%;
+  background: linear-gradient(90deg, transparent, rgba(132,204,22,0.20), transparent);
+  animation: slide-sheen 6s ease-in-out infinite;
+}

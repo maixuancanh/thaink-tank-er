@@ -46,12 +46,15 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f4f0e8] text-[#15140f]">
-      <section className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-5 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div className="flex flex-col justify-between rounded-xl bg-[#15140f] p-6 text-white">
+    <main className="relative min-h-screen overflow-hidden bg-[#f4f0e8] text-[#15140f]">
+      <div className="lab-grid pointer-events-none absolute inset-0 opacity-70" />
+      <div className="pointer-events-none absolute right-10 top-16 h-52 w-52 rounded-full bg-lime-300/30 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-10 left-20 h-56 w-56 rounded-full bg-black/10 blur-3xl" />
+      <section className="relative mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-5 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div className="privacy-sheen flex flex-col justify-between rounded-xl bg-[#15140f] p-6 text-white shadow-2xl shadow-black/20">
           <nav className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Image src="/brand-logo.png" alt="Thaink Tank ER logo" width={48} height={48} className="h-12 w-12 rounded-lg object-cover" priority />
+              <Image src="/brand-logo.png" alt="Thaink Tank ER logo" width={48} height={48} className="drift h-12 w-12 rounded-lg object-cover ring-1 ring-lime-200/40" priority />
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-lime-200">Thaink Tank ER</p>
                 <p className="text-xs text-stone-400">Anonymous collaboration lab</p>
@@ -80,7 +83,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-black/10 bg-white p-5 shadow-xl">
+        <div className="rounded-xl border border-black/10 bg-white/95 p-5 shadow-xl backdrop-blur">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-4">
             <div>
               <h2 className="text-2xl font-semibold">Live Idea Tank</h2>
@@ -102,7 +105,7 @@ export default function Home() {
               <textarea value={idea} onChange={(e) => setIdea(e.target.value)} className="min-h-32 rounded-lg border border-black/10 bg-stone-50 p-4 outline-none focus:border-lime-500" />
             </label>
 
-            <div className="grid gap-3 rounded-lg border border-black/10 bg-stone-50 p-4 sm:grid-cols-[1fr_160px]">
+            <div className="reveal-glow grid gap-3 rounded-lg border border-black/10 bg-stone-50 p-4 sm:grid-cols-[1fr_160px]">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Idea commitment</p>
                 <p className="mt-2 break-all font-mono text-xs text-lime-800">{ideaHash}</p>
@@ -137,7 +140,7 @@ export default function Home() {
               </div>
               <div className="grid gap-2 p-3">
                 {proofs.length === 0 ? <p className="py-6 text-center text-sm text-stone-500">No proof yet.</p> : proofs.map((proof) => (
-                  <a key={proof.signature} href={explorerTx(proof.signature)} target="_blank" rel="noreferrer" className="rounded-lg bg-stone-50 p-3 hover:bg-lime-50">
+                  <a key={proof.signature} href={explorerTx(proof.signature)} target="_blank" rel="noreferrer" className="rounded-lg bg-stone-50 p-3 transition hover:-translate-y-0.5 hover:bg-lime-50 hover:shadow-lg hover:shadow-lime-300/20">
                     <span className="flex items-center justify-between text-sm font-semibold">{proof.label}<ExternalLink className="h-4 w-4" /></span>
                     <span className="mt-1 block text-xs text-stone-500">{proof.route}</span>
                     <span className="mt-2 block break-all font-mono text-xs text-lime-800">{proof.signature}</span>
