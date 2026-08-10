@@ -1,6 +1,6 @@
 # Thaink Tank ER
 
-Independent Solana Blitz V7 submission for anonymous collaborative ideation with MagicBlock Private ER proof.
+Independent Solana Blitz V7 submission for anonymous collaborative ideation with MagicBlock ER proof.
 
 ## Demo Flow
 
@@ -13,9 +13,11 @@ Independent Solana Blitz V7 submission for anonymous collaborative ideation with
 
 ## MagicBlock Use
 
-- Private ER endpoint: `https://devnet-tee.magicblock.app`
+- MagicBlock ER endpoint: `https://devnet.magicblock.app`
 - Solana devnet endpoint: `https://api.devnet.solana.com`
-- Proof format: signed memo transactions for the MVP, with commit/reveal/digest hashes visible in the UI.
+- Custom program ID: `B6V9ZneUTRCMxAERJwEY5Q361beYDBSo55xo1S2QgW4Q`
+- Deploy tx: `4FnCQ6qjgJRytDSypjHtbMXk7W24fXCWjWA5rpR3ieZQb5cTU32mtvCQLKrVP6sxyD2rmD88V25QsE9J4BiEZWsp`
+- Proof format: wallet-signed custom program instructions carrying commit/reveal/digest payloads.
 
 ## Local Development
 

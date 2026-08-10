@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { ExternalLink, Loader2, LockKeyhole, Sparkles, Wallet } from "lucide-react";
 import { connectWallet, explorerTx, hashPayload, sendMemoProof, shortKey } from "@/lib/solana";
 
-type Proof = { label: string; route: "MagicBlock Private ER" | "Solana Devnet"; signature: string; memo: string };
+type Proof = { label: string; route: "MagicBlock ER" | "Solana Devnet"; signature: string; memo: string };
 
 export default function Home() {
   const [wallet, setWallet] = useState("");
@@ -77,8 +77,8 @@ export default function Home() {
       </section>
 
       <section className="think-actions">
-        <button disabled={!wallet || Boolean(busy)} onClick={() => writeProof("Commit idea", "MagicBlock Private ER", `THAINK_ER_COMMIT:${ideaHash}`)}>Commit Private ER</button>
-        <button disabled={!wallet || Boolean(busy)} onClick={() => writeProof("Reveal idea", "MagicBlock Private ER", `THAINK_ER_REVEAL:${ideaHash}:${salt}`)}>Reveal</button>
+        <button disabled={!wallet || Boolean(busy)} onClick={() => writeProof("Commit idea", "MagicBlock ER", `THAINK_ER_COMMIT:${ideaHash}`)}>Commit Sealed ER</button>
+        <button disabled={!wallet || Boolean(busy)} onClick={() => writeProof("Reveal idea", "MagicBlock ER", `THAINK_ER_REVEAL:${ideaHash}:${salt}`)}>Reveal</button>
         <button disabled={!wallet || Boolean(busy)} onClick={() => writeProof("Finalize digest", "Solana Devnet", `THAINK_ER_DIGEST:${digestHash}:score=${score}`)}>Settle Digest</button>
       </section>
       {error ? <p className="think-error">{error}</p> : null}

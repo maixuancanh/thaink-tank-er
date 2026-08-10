@@ -4,8 +4,8 @@ import { Connection, PublicKey, Transaction, TransactionInstruction } from "@sol
 import { Buffer } from "buffer";
 
 const DEVNET_RPC = "https://api.devnet.solana.com";
-const MAGICBLOCK_PRIVATE_ER_RPC = "https://devnet-tee.magicblock.app";
-const MEMO_PROGRAM_ID = new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr");
+const MAGICBLOCK_ER_RPC = "https://devnet.magicblock.app";
+export const PROJECT_PROGRAM_ID = new PublicKey("B6V9ZneUTRCMxAERJwEY5Q361beYDBSo55xo1S2QgW4Q");
 
 type SolanaProvider = {
   publicKey?: PublicKey;
@@ -27,6 +27,10 @@ export function explorerTx(signature: string) {
   return `https://explorer.solana.com/tx/${signature}?cluster=devnet`;
 }
 
+export function explorerAddress(address = PROJECT_PROGRAM_ID.toBase58()) {
+  return `https://explorer.solana.com/address/${address}?cluster=devnet`;
+}
+
 export function hashPayload(payload: string) {
   return bytesToHex(sha256(new TextEncoder().encode(payload)));
 }
@@ -37,14 +41,14 @@ export async function connectWallet() {
   return response.publicKey.toBase58();
 }
 
-export async function sendMemoProof(route: "MagicBlock Private ER" | "Solana Devnet", memo: string) {
+export async function sendMemoProof(route: "MagicBlock ER" | "Solana Devnet", memo: string) {
   if (!window.solana?.publicKey) throw new Error("Wallet is not connected");
-  const endpoint = route === "MagicBlock Private ER" ? MAGICBLOCK_PRIVATE_ER_RPC : DEVNET_RPC;
+  const endpoint = route === "MagicBlock ER" ? MAGICBLOCK_ER_RPC : DEVNET_RPC;
   const connection = new Connection(endpoint, "confirmed");
   const transaction = new Transaction().add(
     new TransactionInstruction({
       keys: [],
-      programId: MEMO_PROGRAM_ID,
+      programId: PROJECT_PROGRAM_ID,
       data: Buffer.from(memo, "utf8"),
     }),
   );
